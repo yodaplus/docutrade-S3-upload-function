@@ -15,6 +15,7 @@ router.post("/", checkApiKey, async (req: Request, res: Response) => {
   } = req;
 
   try {
+    console.log("start /");
     const result = await uploadDocument(document);
     res.status(200).json(result);
   } catch (err) {
@@ -29,6 +30,7 @@ router.post("/:id", checkApiKey, async (req: Request, res: Response) => {
   } = req;
 
   try {
+    console.log("start id");
     const result = await uploadDocumentAtId(document, id);
     res.status(200).json(result);
   } catch (err) {
@@ -38,6 +40,7 @@ router.post("/:id", checkApiKey, async (req: Request, res: Response) => {
 
 router.get("/queue", checkApiKey, async (req: Request, res: Response) => {
   try {
+    console.log("start queue");
     const result = await getQueueNumber();
     res.status(200).json(result);
   } catch (err) {
@@ -52,6 +55,7 @@ router.get("/:id", async (req: Request, res: Response) => {
   } = req;
 
   try {
+    console.log("start /:id");
     const { document } = await getDocument(id);
 
     res.status(200).json(document);

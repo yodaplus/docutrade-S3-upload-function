@@ -8,6 +8,7 @@ import {
   WrappedDocument,
   OpenAttestationDocument,
   utils,
+  getData,
 } from "@govtechsg/open-attestation";
 import { encryptString } from "@govtechsg/oa-encryption";
 import { networkName } from "@govtechsg/tradetrust-utils/constants/network";
@@ -39,19 +40,20 @@ export const checkApiKey = (req, res, next) => {
 
 const getSupportedNetwork = (network: networkName) => {
   return Object.values(SUPPORTED_NETWORKS).find(
-    (item) => item.name === network,
+    (item) => item.name === network
   );
 };
 
 export const validateNetwork = async (
-  document: WrappedDocument<OpenAttestationDocument>,
+  document: WrappedDocument<OpenAttestationDocument>
 ) => {
   if (utils.isWrappedV2Document(document)) {
-    const { network } = utils.getData(document);
-
+    const { network } = getData(document);
+    console.log("check v2", network);
     if (!network) {
       throw new createError(400, ERROR_MESSAGE.DOCUMENT_NETWORK_NOT_FOUND);
     } else {
+      console.log("check in else", network);
       return network;
     }
   } else if (utils.isWrappedV3Document(document)) {
@@ -84,15 +86,15 @@ export const validateDocument = async ({
     [...openAttestationVerifiers, openAttestationDidIdentityProof],
     {
       provider: supportedNetwork.provider(),
-    },
+    }
   );
-
+  console.log("validateDoc");
   const fragments = await verify(document);
-
+  console.log("validate 0", fragments);
   if (!isValid(fragments)) {
     throw new createError(400, ERROR_MESSAGE.DOCUMENT_GENERIC_ERROR);
   }
-
+  console.log("validate 1", !isValid(fragments));
   return fragments;
 };
 

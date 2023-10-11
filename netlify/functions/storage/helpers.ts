@@ -20,18 +20,20 @@ export const getDocument = async (id: string) => {
 };
 
 export const uploadDocument = async (document) => {
+  console.log("start");
+  // @ts-ignore
   const { chainId } = await validateNetwork(document);
-
+  console.log("chainId", chainId);
   await validateDocument({
     document,
     network: SUPPORTED_NETWORKS[chainId as CHAIN_ID].name,
   });
-
+  console.log("uploadDocVerified");
   const { encryptedDocument, encryptedDocumentKey } =
     await getEncryptedDocument({
       str: JSON.stringify(document),
     });
-
+  console.log("uploadDoc", encryptedDocument, encryptedDocumentKey);
   const id = uuid();
   await s3Put({
     Bucket: process.env.TT_AWS_BUCKET_NAME,
@@ -47,13 +49,14 @@ export const uploadDocument = async (document) => {
 };
 
 export const uploadDocumentAtId = async (document, documentId: string) => {
+  // @ts-ignore
   const { chainId } = await validateNetwork(document);
-
+  console.log("check in uploadDocAtId", chainId);
   await validateDocument({
     document,
     network: SUPPORTED_NETWORKS[chainId as CHAIN_ID].name,
   });
-
+  console.log("check in uploadDocAtId validated?");
   const { key: existingKey } = await getDocument(documentId);
   const { encryptedDocument, encryptedDocumentKey } =
     await getEncryptedDocument({

@@ -7,18 +7,8 @@ import {
 
 export const ALLOWED_ORIGINS =
   process.env.NODE_ENV === "test"
-    ? [
-        "http://127.0.0.1:3000",
-        "http://localhost:3000",
-        "https://creator.tradetrust.io",
-        "https://dev.tradetrust.io",
-        "https://tradetrust.io",
-      ]
-    : [
-        "https://creator.tradetrust.io",
-        "https://dev.tradetrust.io",
-        "https://tradetrust.io",
-      ];
+    ? ["http://127.0.0.1:3000", "http://localhost:3000"]
+    : ["http://localhost:3000"];
 
 export enum ERROR_MESSAGE {
   CORS_UNALLOWED = "The CORS policy for this site does not allow access from the specified Origin.",
