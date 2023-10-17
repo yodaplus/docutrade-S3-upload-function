@@ -1,25 +1,27 @@
 import AWS, { S3 } from "aws-sdk";
 import createError from "http-errors";
 import { ERROR_MESSAGE } from "../../constants";
+import * as dotenv from "dotenv";
+dotenv.config();
 
-// const option =
-//   process.env.NODE_ENV === "test"
-//     ? {
-//         accessKeyId: "S3RVER",
-//         secretAccessKey: "S3RVER",
-//         endpoint: `http://localhost:4568`,
-//         sslEnabled: false,
-//         s3ForcePathStyle: true,
-//       }
-//     : {
-//         accessKeyId: process.env.TT_STORAGE_AWS_ACCESS_KEY_ID,
-//         secretAccessKey: process.env.TT_STORAGE_AWS_SECRET_ACCESS_KEY,
-//       };
+const option =
+  process.env.NODE_ENV === "test"
+    ? {
+        accessKeyId: "S3RVER",
+        secretAccessKey: "S3RVER",
+        endpoint: `http://localhost:4568`,
+        sslEnabled: false,
+        s3ForcePathStyle: true,
+      }
+    : {
+        accessKeyId: process.env.TT_STORAGE_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.TT_STORAGE_AWS_SECRET_ACCESS_KEY,
+      };
 
-const option = {
-  accessKeyId: process.env.TT_STORAGE_AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.TT_STORAGE_AWS_SECRET_ACCESS_KEY,
-};
+// const option = {
+//   accessKeyId: process.env.TT_STORAGE_AWS_ACCESS_KEY_ID,
+//   secretAccessKey: process.env.TT_STORAGE_AWS_SECRET_ACCESS_KEY,
+// };
 
 const s3 = new AWS.S3(option);
 

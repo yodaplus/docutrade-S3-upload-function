@@ -4,11 +4,27 @@ import {
   SUPPORTED_CHAINS,
   chainInfo,
 } from "@govtechsg/tradetrust-utils/constants/supportedChains";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 export const ALLOWED_ORIGINS =
   process.env.NODE_ENV === "test"
-    ? ["http://127.0.0.1:3000", "http://localhost:3000"]
-    : ["http://localhost:3000"];
+    ? [
+        "http://127.0.0.1:3000",
+        "http://localhost:3000",
+        "https://creator.tradetrust.io",
+        "https://dev.tradetrust.io",
+        "https://tradetrust.io",
+        "*",
+      ]
+    : [
+        "https://creator.tradetrust.io",
+        "https://dev.tradetrust.io",
+        "https://tradetrust.io",
+        "https://docutrade-qa.yodaplus.net",
+        "https://docutrade.yodaplus.net",
+        "https://docutrade-sandbox.yodaplus.net",
+      ];
 
 export enum ERROR_MESSAGE {
   CORS_UNALLOWED = "The CORS policy for this site does not allow access from the specified Origin.",
@@ -24,7 +40,7 @@ export enum DOCUMENT_STORAGE_ERROR_MESSAGE {
   KEY_NOT_EXISTS = "The specified key does not exist.",
 }
 
-export const MAX_REQUEST_BODY_SIZE = "6mb";
+export const MAX_REQUEST_BODY_SIZE = "32mb";
 
 const infuraProvider =
   (networkName: string): (() => providers.Provider) =>

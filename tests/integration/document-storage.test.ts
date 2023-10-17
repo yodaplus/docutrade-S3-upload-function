@@ -11,6 +11,8 @@ import {
   ERROR_MESSAGE,
   DOCUMENT_STORAGE_ERROR_MESSAGE,
 } from "../../netlify/constants";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const API_ENDPOINT = "http://localhost:9999/.netlify/functions/storage";
 const request = supertest(API_ENDPOINT);
@@ -118,7 +120,7 @@ describe("POST /", () => {
       .expect(400);
 
     expect(response.body.message).toBe(
-      ERROR_MESSAGE.DOCUMENT_NETWORK_NOT_FOUND,
+      ERROR_MESSAGE.DOCUMENT_NETWORK_NOT_FOUND
     );
   });
 
@@ -132,7 +134,7 @@ describe("POST /", () => {
       .expect(400);
 
     expect(response.body.message).toBe(
-      ERROR_MESSAGE.DOCUMENT_NETWORK_NOT_FOUND,
+      ERROR_MESSAGE.DOCUMENT_NETWORK_NOT_FOUND
     );
   });
 });
@@ -174,7 +176,7 @@ describe("GET /:id", () => {
     const response = await request.get("/abc").expect(400);
 
     expect(response.body.message).toBe(
-      DOCUMENT_STORAGE_ERROR_MESSAGE.KEY_NOT_EXISTS,
+      DOCUMENT_STORAGE_ERROR_MESSAGE.KEY_NOT_EXISTS
     );
   });
 });

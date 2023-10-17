@@ -9,6 +9,8 @@ import {
 import { s3Put } from "../../services/s3";
 import { SUPPORTED_NETWORKS } from "../../constants";
 import { s3Get } from "../../services/s3";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 export const getDocument = async (id: string) => {
   const document = await s3Get({

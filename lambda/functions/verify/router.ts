@@ -12,6 +12,7 @@ router.post("/", async (req: Request, res: Response) => {
   } = req;
 
   try {
+    console.log("start /");
     const fragments = await validateDocument({
       document,
       network: network as networkName,

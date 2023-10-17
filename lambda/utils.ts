@@ -18,6 +18,8 @@ import {
   ERROR_MESSAGE,
   SUPPORTED_NETWORKS,
 } from "./constants";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 // https://github.com/expressjs/cors#configuring-cors-w-dynamic-origin
 export const corsOrigin = (origin, callback) => {

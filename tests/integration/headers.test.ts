@@ -5,6 +5,8 @@ import { ERROR_MESSAGE } from "../../netlify/constants";
 const API_ENDPOINT = "http://localhost:9999/.netlify/functions/storage";
 const request = supertest(API_ENDPOINT);
 const postData = { document: documentSepolia };
+import * as dotenv from "dotenv";
+dotenv.config();
 
 describe("API key check", () => {
   it("should fail with 400 when API key is not provided", async () => {
