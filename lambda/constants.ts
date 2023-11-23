@@ -24,6 +24,9 @@ export const ALLOWED_ORIGINS =
         "https://docutrade-qa.yodaplus.net",
         "https://docutrade.yodaplus.net",
         "https://docutrade-sandbox.yodaplus.net",
+        "https://docutrade-polygon.yodaplus.net",
+        "https://docutrade-magic.yodaplus.net",
+        "https://app.docutrade.io",
       ];
 
 export enum ERROR_MESSAGE {
