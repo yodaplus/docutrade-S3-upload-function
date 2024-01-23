@@ -28,6 +28,7 @@ export const ALLOWED_ORIGINS =
         "https://docutrade-magic.yodaplus.net",
         "https://app.docutrade.io",
         "https://app-sandbox.docutrade.io",
+        "https://app-qa.docutrade.io",
         "docutrade.io",
       ];
 
