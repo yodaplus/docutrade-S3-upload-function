@@ -24,10 +24,6 @@ app.disable("x-powered-by");
 
 export const handler = serverless(app);
 
-// app.listen(9999, () => {
-//   console.log("Server running on port 9999");
-// });
-
 // app.listen(8888, () => {
-// 	console.log("Server running on port 8888");
+//   console.log("Server running on port 8888");
 // });
