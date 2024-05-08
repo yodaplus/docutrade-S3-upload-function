@@ -3,7 +3,7 @@ import {
   CHAIN_ID,
   SUPPORTED_CHAINS,
   chainInfo,
-} from "@govtechsg/tradetrust-utils/constants/supportedChains";
+} from "@tradetrust-tt/tradetrust-utils/constants/supportedChains";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -12,6 +12,8 @@ export const ALLOWED_ORIGINS =
     ? [
         "http://127.0.0.1:3000",
         "http://localhost:3000",
+        "http://127.0.0.1:3000/*",
+        "http://localhost:3000/*",
         "https://creator.tradetrust.io",
         "https://dev.tradetrust.io",
         "https://tradetrust.io",
@@ -76,9 +78,11 @@ export const SUPPORTED_NETWORKS: supportedNetworks = {
     ...SUPPORTED_CHAINS[CHAIN_ID.matic],
     provider: infuraProvider("matic"),
   },
-  [CHAIN_ID.maticmum]: {
-    ...SUPPORTED_CHAINS[CHAIN_ID.maticmum],
-    provider: infuraProvider("maticmum"),
+  [CHAIN_ID.amoy]: {
+    ...SUPPORTED_CHAINS[CHAIN_ID.amoy],
+    provider: jsonRpcProvider(
+      `https://polygon-amoy.infura.io/v3/${process.env.INFURA_ID}`
+    ),
   },
   [CHAIN_ID.sepolia]: {
     ...SUPPORTED_CHAINS[CHAIN_ID.sepolia],
@@ -91,5 +95,23 @@ export const SUPPORTED_NETWORKS: supportedNetworks = {
   [CHAIN_ID.xdcapothem]: {
     ...SUPPORTED_CHAINS[CHAIN_ID.xdcapothem],
     provider: jsonRpcProvider(SUPPORTED_CHAINS[CHAIN_ID.xdcapothem].rpcUrl),
+  },
+  [CHAIN_ID.stability]: {
+    ...SUPPORTED_CHAINS[CHAIN_ID.stability],
+    provider: jsonRpcProvider(SUPPORTED_CHAINS[CHAIN_ID.stability].rpcUrl),
+  },
+  [CHAIN_ID.stabilitytestnet]: {
+    ...SUPPORTED_CHAINS[CHAIN_ID.stabilitytestnet],
+    provider: jsonRpcProvider(
+      SUPPORTED_CHAINS[CHAIN_ID.stabilitytestnet].rpcUrl
+    ),
+  },
+  [CHAIN_ID.hederatestnet]: {
+    ...SUPPORTED_CHAINS[CHAIN_ID.hederatestnet],
+    provider: jsonRpcProvider(SUPPORTED_CHAINS[CHAIN_ID.hederatestnet].rpcUrl),
+  },
+  [CHAIN_ID.hederamainnet]: {
+    ...SUPPORTED_CHAINS[CHAIN_ID.hederamainnet],
+    provider: jsonRpcProvider(SUPPORTED_CHAINS[CHAIN_ID.hederamainnet].rpcUrl),
   },
 };
