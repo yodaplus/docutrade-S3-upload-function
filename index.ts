@@ -22,8 +22,8 @@ app.use("/functions/storage", storageRouter);
 app.use("/functions/verify", verifyRouter);
 app.disable("x-powered-by");
 
-export const handler = serverless(app);
+// export const handler = serverless(app);
 
-// app.listen(8888, () => {
-//   console.log("Server running on port 8888");
-// });
+app.listen(8888, () => {
+   console.log("Server running on port 8888");
+ });
