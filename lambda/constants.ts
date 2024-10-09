@@ -98,7 +98,7 @@ export const SUPPORTED_NETWORKS: supportedNetworks = {
   },
   [CHAIN_ID.xdcapothem]: {
     ...SUPPORTED_CHAINS[CHAIN_ID.xdcapothem],
-    provider: jsonRpcProvider(SUPPORTED_CHAINS[CHAIN_ID.xdcapothem].rpcUrl),
+    provider: jsonRpcProvider("https://erpc.apothem.network"),
   },
   [CHAIN_ID.stability]: {
     ...SUPPORTED_CHAINS[CHAIN_ID.stability],
