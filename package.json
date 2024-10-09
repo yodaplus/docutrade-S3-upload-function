@@ -9,7 +9,7 @@
     "@govtechsg/tradetrust-utils": "^1.6.1",
     "@netlify/functions": "^2.0.2",
     "@tradetrust-tt/tradetrust": "^6.9.4",
-    "@tradetrust-tt/tradetrust-utils": "^1.13.4",
+    "@tradetrust-tt/tradetrust-utils": "^1.13.5",
     "@tradetrust-tt/tt-verify": "^8.9.2",
     "aws-sdk": "^2.1463.0",
     "body-parser": "^1.20.1",
@@ -18,6 +18,7 @@
     "express": "^4.18.2",
     "http-errors": "^2.0.0",
     "serverless-http": "^3.0.3",
+    "ts-node": "^10.9.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -44,7 +45,8 @@
     "test:api": "wait-on tcp:9999 tcp:4568 && npm run test",
     "test:ci": "concurrently -k -s first \"npm:test:serve\" \"npm:local:s3\" \"npm:test:api\"",
     "test:serve": "API_KEY=testkey NODE_ENV=test TT_AWS_BUCKET_NAME=test-bucket netlify functions:serve",
-    "start": "npm run local:clean && concurrently \"npm:test:serve\" \"npm:local:s3\""
+    "start-local": "npm run local:clean && concurrently \"npm:test:serve\" \"npm:local:s3\"",
+    "start": "ts-node ./index.ts"
   },
   "repository": {
     "type": "git",
