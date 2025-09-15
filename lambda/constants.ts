@@ -28,6 +28,8 @@ export const ALLOWED_ORIGINS =
         "https://app.docutrade.io",
         "https://app-sandbox.docutrade.io",
         "https://app-qa.docutrade.io",
+        "https://app-xdc.docutrade.io",
+        "https://app-qa-xdc.docutrade.io",
         "docutrade.io",
       ];
 
