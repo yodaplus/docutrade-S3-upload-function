@@ -8,22 +8,15 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 export const ALLOWED_ORIGINS =
-  process.env.NODE_ENV === "test"
+  process.env.CORS_ENV === "dev"
     ? [
         "http://127.0.0.1:3000",
         "http://localhost:3000",
         "http://127.0.0.1:3000/*",
         "http://localhost:3000/*",
-        "https://creator.tradetrust.io",
-        "https://dev.tradetrust.io",
-        "https://tradetrust.io",
         "*",
       ]
     : [
-        "http://127.0.0.1:3000",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000/*",
-        "http://localhost:3000/*",
         "https://creator.tradetrust.io",
         "https://dev.tradetrust.io",
         "https://tradetrust.io",
@@ -84,9 +77,7 @@ export const SUPPORTED_NETWORKS: supportedNetworks = {
   },
   [CHAIN_ID.amoy]: {
     ...SUPPORTED_CHAINS[CHAIN_ID.amoy],
-    provider: jsonRpcProvider(
-      `https://polygon-amoy.infura.io/v3/${process.env.INFURA_ID}`
-    ),
+    provider: jsonRpcProvider(SUPPORTED_CHAINS[CHAIN_ID.amoy].rpcUrl),
   },
   [CHAIN_ID.sepolia]: {
     ...SUPPORTED_CHAINS[CHAIN_ID.sepolia],
@@ -110,12 +101,12 @@ export const SUPPORTED_NETWORKS: supportedNetworks = {
       SUPPORTED_CHAINS[CHAIN_ID.stabilitytestnet].rpcUrl
     ),
   },
-  [CHAIN_ID.hederatestnet]: {
-    ...SUPPORTED_CHAINS[CHAIN_ID.hederatestnet],
-    provider: jsonRpcProvider(SUPPORTED_CHAINS[CHAIN_ID.hederatestnet].rpcUrl),
+  [CHAIN_ID.astron]: {
+    ...SUPPORTED_CHAINS[CHAIN_ID.astron],
+    provider: jsonRpcProvider(SUPPORTED_CHAINS[CHAIN_ID.astron].rpcUrl),
   },
-  [CHAIN_ID.hederamainnet]: {
-    ...SUPPORTED_CHAINS[CHAIN_ID.hederamainnet],
-    provider: jsonRpcProvider(SUPPORTED_CHAINS[CHAIN_ID.hederamainnet].rpcUrl),
+  [CHAIN_ID.astrontestnet]: {
+    ...SUPPORTED_CHAINS[CHAIN_ID.astrontestnet],
+    provider: jsonRpcProvider(SUPPORTED_CHAINS[CHAIN_ID.astrontestnet].rpcUrl),
   },
 };
